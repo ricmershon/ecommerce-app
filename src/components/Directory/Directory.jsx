@@ -39,7 +39,7 @@ class Directory extends Component {
             <div className='directory-menu'>
             {
                 this.state.departments.map(({ id, ...otherDepartmentProps }) => (
-                    <MenuItem id={ id } { ...otherDepartmentProps } />
+                    <MenuItem key={ id } { ...otherDepartmentProps } />
                 ))
             } 
             </div>

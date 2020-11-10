@@ -54,13 +54,13 @@ export const firestore = firebase.firestore();
  * GoogleAuthProvider for authentication and signin.
  */
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' })
+const authProvider = new firebase.auth.GoogleAuthProvider();
+authProvider.setCustomParameters({ prompt: 'select_account' })
 
 /*
- * Google signin method. Takes provider Class and uses for just Google signins.
+ * Export Google signin method. Takes provider class and uses for just Google signins.
  */ 
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(authProvider);
 
 export default firebase;

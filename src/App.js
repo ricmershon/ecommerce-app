@@ -11,6 +11,7 @@
  * EXTERNAL DEPENDENCIES
  */
 
+ import React, { Component } from 'react';
  import { Switch, Route } from 'react-router-dom';
 
 /*
@@ -23,20 +24,67 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/SignInAndSignUpPage';
+import { auth } from './firebase/firebase-utils';
 
 /*
  * App functional component
  */
 
-const App = () => (
-    <div>
-        <Header />
-        <Switch>
-            <Route exact path ='/' component={ HomePage } />
-            <Route path ='/shop' component={ ShopPage } />
-            <Route path ='/signin' component={ SignInAndSignUpPage } />
-        </Switch>
-    </div>
-)
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            currentUser: null
+        }
+    }
 
+    // unsubscribeFromAuth is used to store firebase.Unsubscribe method
+    // returned by auth.onAuthStateChanged().
+
+    unsubscribeFromAuth = null;
+
+    /*
+     * React lifecycle method componentDidMount(). auth.onAuthStateChanged() sets
+     * up a firebase observer that is triggered on user sign-in or sign-out.
+     * The observer fires the anoymous funcion within auth.OnAuthStateChanged()
+     * and passes in the user, whose state changed, as a parameter.
+     * 
+     * auth.onAuthStateChanged returns the firebase.Unsubscribe() method, which
+     * is stored in this.unsubscribeFromAuth to turn off the firebase observer
+     * in the componentWillUnmount() React lifecycle method.
+     *
+     * More details at
+     * https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onauthstatechanged
+     */
+
+    componentDidMount() {
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+            this.setState({ currentUser: user })
+        })
+    }
+
+    /*
+     * React lifecycle method componentWillMount(). Uses the method returned
+     * from auth.onAuthStateChanged to turn off the firebase observer.
+     */
+
+    componentWillUnmount() {
+        this.unsubscribeFromAuth();
+    }
+
+    render() {
+        return (    
+            <div>
+                <Header currentUser={ this.state.currentUser }/>
+                <Switch>
+                    <Route exact path ='/' component={ HomePage } />
+                    <Route path ='/shop' component={ ShopPage } />
+                    <Route path ='/signin' component={ SignInAndSignUpPage } />
+                </Switch>
+            </div>
+        )
+    }
+
+
+}
 export default App;
