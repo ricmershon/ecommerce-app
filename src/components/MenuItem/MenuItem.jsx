@@ -1,6 +1,28 @@
+/*
+ * PROJECT: ecommerce-app client
+ * MODULE: MenuItem.jsx
+ * CREATED: November 2020
+ * CREATED BY: Ric Mershon
+ *
+ * Description: MenuItem React functional component.
+ */
+
+/*
+ * EXTERNAL DEPENDENCIES
+ */
+
 import React from 'react';
 import { withRouter } from 'react-router-dom'
+
+/*
+ * INTERNAL DEPENDENCIES
+ */
+
 import './MenuItem-styles.scss';
+
+/*
+ * MenuItem component
+ */
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
     <div

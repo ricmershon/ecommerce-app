@@ -1,5 +1,27 @@
+/*
+ * PROJECT: ecommerce-app client
+ * MODULE: CollectionItem.jsx
+ * CREATED: November 2020
+ * CREATED BY: Ric Mershon
+ *
+ * Description: CollectionItem React functional compoonent.
+ */
+
+/*
+ * EXTERNAL DEPENDENCIES
+ */
+
 import React from 'react';
+
+/*
+ * INTERNAL DEPENDENCIES
+ */
+
 import './CollectionItem-styles.scss';
+
+/*
+ * CollectionItem component
+ */
 
 const CollectionItem = ({ id, name, price, imageUrl }) => {
     return (

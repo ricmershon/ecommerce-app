@@ -1,7 +1,32 @@
+/*
+ * PROJECT: ecommerce-app client
+ * MODULE: SignIn.jsx
+ * CREATED: November 2020
+ * CREATED BY: Ric Mershon
+ *
+ * Description: SignIn React class component. Email and password
+ * maintained in state.
+ */
+
+/*
+ * EXTERNAL DEPENDENCIES
+ */
+
 import React, { Component } from 'react';
+
+/*
+ * INTERNAL DEPENDENCIES
+ */
+
 import './SignIn-styles.scss';
-import FormInput from '../FormInput/FormInput'
-import CustomButton from '../CustomButton/CustomButton'
+import FormInput from '../FormInput/FormInput';
+import CustomButton from '../CustomButton/CustomButton';
+
+import { signInWithGoogle } from '../../firebase/firebase-utils';
+
+/*
+ * SignIn component
+ */
 
 class SignIn extends Component {
     constructor(props) {
@@ -12,6 +37,10 @@ class SignIn extends Component {
         }
     }
 
+    /*
+     * Class methods to handle form change and submit actions
+     */
+
     handleSubmit = event => {
         event.preventDefault();
         this.setState({ email: '', password: '' })
@@ -21,6 +50,10 @@ class SignIn extends Component {
         const { value, name } = event.target;
         this.setState({ [name]: value })
     }
+
+    /*
+     * SignIn component render
+     */
 
     render() {
         return (
@@ -45,7 +78,10 @@ class SignIn extends Component {
                         handleChange={ this.handleChange }
                         required
                     />
-                    <CustomButton type='submit' value='Submit Form'>Sign in</CustomButton>
+                    <CustomButton type='submit'>Sign in</CustomButton>
+                    <CustomButton onClick={ signInWithGoogle }>
+                        {' '}Sign in with Google{' '}
+                    </CustomButton>
                 </form>
             </div>
         )
