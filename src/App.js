@@ -24,7 +24,7 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/SignInAndSignUpPage';
-import { auth } from './firebase/firebase-utils';
+import { auth, createUserProfileDocument } from './firebase/firebase-utils';
 
 /*
  * App functional component
@@ -38,8 +38,10 @@ class App extends Component {
         }
     }
 
-    // unsubscribeFromAuth is used to store firebase.Unsubscribe method
-    // returned by auth.onAuthStateChanged().
+    /* 
+     * unsubscribeFromAuth is used to store firebase.Unsubscribe method returned
+     * by auth.onAuthStateChanged().
+     */
 
     unsubscribeFromAuth = null;
 
@@ -47,7 +49,9 @@ class App extends Component {
      * React lifecycle method componentDidMount(). auth.onAuthStateChanged() sets
      * up a firebase observer that is triggered on user sign-in or sign-out.
      * The observer fires the anoymous funcion within auth.OnAuthStateChanged()
-     * and passes in the user, whose state changed, as a parameter.
+     * and passes in the user, whose state changed, as a parameter. This
+     * anonymous function calls createUserProfileDocument() to attempt to create
+     * a new user.
      * 
      * auth.onAuthStateChanged returns the firebase.Unsubscribe() method, which
      * is stored in this.unsubscribeFromAuth to turn off the firebase observer
@@ -58,8 +62,36 @@ class App extends Component {
      */
 
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-            this.setState({ currentUser: user })
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+
+            /*
+             * If the user is logged in use the user reference returned from
+             * createUserProfileDocument() to retrieve the snapshot data in
+             * order set state currentUser. onSnapshot() also listens for
+             * any changes of the snapshot data.
+             */
+
+            if (user) {
+                const userRef = await createUserProfileDocument(user);
+                userRef.onSnapshot((snapShot) => {
+                    this.setState({
+                        currentUser: {
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    })
+                })
+
+                console.log(this.state);
+
+            /*
+             * If the user logs out set state currentUser to user,
+             * which is null.
+             */
+            
+            } else {
+                this.setState({ currentUser: user });
+            }
         })
     }
 

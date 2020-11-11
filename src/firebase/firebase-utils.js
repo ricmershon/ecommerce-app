@@ -4,7 +4,7 @@
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: Provides Firebase utilities.
+ * Description: Utilities for Firebase integration and use.
  */
 
 /*
@@ -35,11 +35,44 @@ const firebaseConfig = {
 };
 
 /*
+ * createUserProfileDocument() creates a new user profile document in the
+ * users collection within the Fireabase Cloud Firestore.
+ */
+
+export const createUserProfileDocument = async (user, additionalData) => {
+    if (!user) return;
+
+    const userRef = firestore.doc(`users/${user.uid}`); // reference in storage
+    const snapShot = await userRef.get();               // data object from the
+                                                        // reference userRef
+    /*
+     * Create the user profile document in the Cloud Firestore if it does
+     * not already exist.
+     */
+
+    if (!snapShot.exists) {
+        const { displayName, email, photoURL } = user;
+        const createdAt = new Date();
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                photoURL,
+                createdAt,
+                ...additionalData
+            })
+        } catch(error) {
+            console.error('Error creating user', error.message);
+        }
+    }
+    return userRef; // Return user reference object.
+}
+
+/*
  * Initialize firebase
  */
 
 firebase.initializeApp(firebaseConfig);
-
 
 /*
  * Export Firebase auth and firestore utilities for use by app.
