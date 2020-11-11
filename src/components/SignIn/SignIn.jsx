@@ -22,7 +22,7 @@ import './SignIn-styles.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
-import { signInWithGoogle } from '../../firebase/firebase-utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase-utils';
 
 /*
  * SignIn component
@@ -41,9 +41,22 @@ class SignIn extends Component {
      * Class methods to handle form change and submit actions
      */
 
-    handleSubmit = event => {
+    handleSubmit = async (event) => {
+        const { email, password } = this.state;
         event.preventDefault();
+
         this.setState({ email: '', password: '' })
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+
+            /*
+             * Clear the form by clearing state.
+             */
+
+            this.setState( { email: '', password: '' })
+        } catch(error) {
+            console.error('Error sighning into user account', error.message)
+        }
     }
 
     handleChange = event => {
@@ -78,7 +91,16 @@ class SignIn extends Component {
                         required
                     />
                     <div className='buttons'>
+
+                        { /* 
+                           * Submit the form on this on this component to log
+                           * in a user or registered on the SignUp component
+                           */ }
+                           
                         <CustomButton type='submit'>Sign In</CustomButton>
+
+                        { /* Sign in with Google account*/}
+
                         <CustomButton onClick={ signInWithGoogle } isGoogleSignIn>
                             Sign in with Google
                         </CustomButton>

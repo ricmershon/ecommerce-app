@@ -62,7 +62,7 @@ class SignUp extends Component {
             await createUserProfileDocument(user, { displayName });
 
             /*
-             * Clear the form by resetting state value.
+             * Clear the form by clearing state.
              */
 
             this.setState({
