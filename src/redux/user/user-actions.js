@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: redux/user/user-actions.js
+ * MODULE: src/redux/user/user-actions.js
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
@@ -14,7 +14,7 @@
 import { UserActionTypes } from './user-types'
 
 /*
- * USER ACTION CONFIGURATION
+ * setCurrentUser action configuration
  */
 
 export const setCurrentUser = (user) => ({

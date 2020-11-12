@@ -22,13 +22,16 @@ import { connect } from 'react-redux';
 
 import './Header-styles.scss';
 import { auth } from '../../firebase/firebase-utils';
+import CartIcon from '../CartIcon/CartIcon'
+import CartDropdown from '../CartDropdown/CartDropdown';
+
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 /*
  * Header component
  */
 
-const Header = ({ currentUser }) => (
+const Header = (state) => (
     <div className='header'>
         <Link className='logo-container' to='/'>
             <Logo className='logo' />
@@ -40,7 +43,7 @@ const Header = ({ currentUser }) => (
             <Link className='option' to='/shop'>
                 CONTACT
             </Link>
-            
+
             { /*
                * If there's a user display SIGN OUT with displayName and
                * auth.signOut() to sign out when clicked. Otherwise display 
@@ -48,12 +51,12 @@ const Header = ({ currentUser }) => (
                */ }
 
             {
-                currentUser ? (
+                state.currentUser ? (
                     <div
                         className='option'
                         onClick={ () => auth.signOut() }
                     >
-                        SIGN OUT { currentUser.displayName.toUpperCase() }
+                        SIGN OUT { state.currentUser.displayName.toUpperCase() }
                     </div>
                 ) : (
                     <Link className='option' to='/signin'>
@@ -61,12 +64,17 @@ const Header = ({ currentUser }) => (
                     </Link>
                 )
             }
+            <CartIcon />
         </div>
+        {
+            state.hidden ? null : <CartDropdown />
+        }
     </div>
 )
 
 const mapStateToProps = (state) => ({
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    hidden: state.cart.hidden
 })
 
 export default connect(mapStateToProps)(Header);

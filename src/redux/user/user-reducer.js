@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: redux/user/user-reducer.js
+ * MODULE: src/redux/user/user-reducer.js
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
@@ -14,7 +14,7 @@
 import { UserActionTypes } from './user-types'
 
 /*
- * USER REDUCER CONFIGURATION
+ * userReducer configuration
  */
 
 const INITIAL_STATE = {

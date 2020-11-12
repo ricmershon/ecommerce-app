@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: CollectionItem.jsx
+ * MODULE: src/components/CollectionItem/CollectionItem.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
