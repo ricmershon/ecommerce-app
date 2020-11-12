@@ -19,10 +19,6 @@ import 'firebase/auth';                 // authorization
  * CONFIGURATION
  */
 
-/*
- * Firebase configuration
- */
-
 const firebaseConfig = {
     apiKey: "AIzaSyC-QGgQ_LPNdI2LLzM2EmFyZAD0r95acuM",
     authDomain: "ecommerce-app-db-4a4d6.firebaseapp.com",

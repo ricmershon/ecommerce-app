@@ -13,6 +13,7 @@
 
  import React, { Component } from 'react';
  import { Switch, Route } from 'react-router-dom';
+ import { connect } from 'react-redux';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -25,18 +26,13 @@ import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/SignInAndSignUpPage';
 import { auth, createUserProfileDocument } from './firebase/firebase-utils';
+import { setCurrentUser } from './redux/user/user-actions'
 
 /*
  * App functional component
  */
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            currentUser: null
-        }
-    }
 
     /* 
      * unsubscribeFromAuth is used to store firebase.Unsubscribe method returned
@@ -62,35 +58,32 @@ class App extends Component {
      */
 
     componentDidMount() {
+        const { setCurrentUser } = this.props;
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
 
             /*
              * If the user is logged in use the user reference returned from
              * createUserProfileDocument() to retrieve the snapshot data in
-             * order set state currentUser. onSnapshot() also listens for
-             * any changes of the snapshot data.
+             * order to set currentUser. onSnapshot() also listens for any
+             * changes of the user snapshot data.
              */
 
             if (user) {
                 const userRef = await createUserProfileDocument(user);
                 userRef.onSnapshot((snapShot) => {
-                    this.setState({
-                        currentUser: {
-                            id: snapShot.id,
-                            ...snapShot.data()
-                        }
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
                     })
                 })
 
-                console.log(this.state);
-
             /*
-             * If the user logs out set state currentUser to user,
-             * which is null.
+             * The user is logged out. Set currentUser to user, which
+             * is null.
              */
             
             } else {
-                this.setState({ currentUser: user });
+                setCurrentUser(user);
             }
         })
     }
@@ -107,7 +100,7 @@ class App extends Component {
     render() {
         return (    
             <div>
-                <Header currentUser={ this.state.currentUser }/>
+                <Header />
                 <Switch>
                     <Route exact path ='/' component={ HomePage } />
                     <Route path ='/shop' component={ ShopPage } />
@@ -116,7 +109,10 @@ class App extends Component {
             </div>
         )
     }
-
-
 }
-export default App;
+
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(App);

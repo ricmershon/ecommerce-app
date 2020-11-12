@@ -14,6 +14,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -39,17 +40,20 @@ const Header = ({ currentUser }) => (
             <Link className='option' to='/shop'>
                 CONTACT
             </Link>
+            
+            { /*
+               * If there's a user display SIGN OUT with displayName and
+               * auth.signOut() to sign out when clicked. Otherwise display 
+               * SIGN IN option with route to '/signin.'
+               */ }
+
             {
-                // If there's a user display SIGN OUT with name with onClick()
-                // to sign out when clicked. Otherwise display SIGN IN option
-                // with route to '/signin.'
-                
                 currentUser ? (
                     <div
                         className='option'
                         onClick={ () => auth.signOut() }
                     >
-                        SIGN OUT
+                        SIGN OUT { currentUser.displayName.toUpperCase() }
                     </div>
                 ) : (
                     <Link className='option' to='/signin'>
@@ -61,4 +65,8 @@ const Header = ({ currentUser }) => (
     </div>
 )
 
-export default Header;
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
