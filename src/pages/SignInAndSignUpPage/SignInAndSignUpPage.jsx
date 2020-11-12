@@ -25,7 +25,7 @@ import SignUp from '../../components/SignUp/SignUp';
  * SignInAndSignUp component
  */
 
-const SignInAndSignUp = () => (
+const SignInAndSignUpPage = () => (
     <div className='sign-in-and-sign-up'>
        <SignIn />
        <SignUp />
@@ -33,4 +33,4 @@ const SignInAndSignUp = () => (
     </div>
 )
 
-export default SignInAndSignUp;
+export default SignInAndSignUpPage;
