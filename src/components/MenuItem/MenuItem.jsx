@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: MenuItem.jsx
+ * MODULE: src/components/MenuItem/MenuItem.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

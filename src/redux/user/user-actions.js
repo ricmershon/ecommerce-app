@@ -14,8 +14,10 @@
 import { UserActionTypes } from './user-types'
 
 /*
- * setCurrentUser action configuration
+ * User actions configuration
  */
+
+/* Set the current user */
 
 export const setCurrentUser = (user) => ({
     type: UserActionTypes.SET_CURRENT_USER,

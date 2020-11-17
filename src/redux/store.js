@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: redux/store.js
+ * MODULE: src/redux/store.js
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

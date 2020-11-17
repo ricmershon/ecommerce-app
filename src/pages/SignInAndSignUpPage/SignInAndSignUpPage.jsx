@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: SignInAndSignUpPage.jsx
+ * MODULE: src/pages/SignInAndSignUpPage/SignInAndSignUpPage.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

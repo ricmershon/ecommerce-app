@@ -1,11 +1,11 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: SignUp.jsx
+ * MODULE: src/components/SignUp/SignUp.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: SignUp React class component. Email and password
- * maintained in state.
+ * Description: SignUp React class component. Display name, email, password
+ * and confirm password maintained in local state.
  */
 
 /*

@@ -1,11 +1,11 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: Directory.jsx
+ * MODULE: src/components/Directory/Directory.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: Directory React class component. Departments data
- * maintained in state.
+ * Description: Directory React class component. Departments data maintained
+ * in local state.
  */
 
 /*

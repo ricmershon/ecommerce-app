@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: redux/root-reducer.js
+ * MODULE: src/redux/root-reducer.js
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

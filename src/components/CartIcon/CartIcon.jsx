@@ -26,10 +26,10 @@ import { toggleCartHidden } from '../../redux/cart/cart-actions';
  * CartIcon component
  */
 
-const CartIcon = ({ toggleCartHidden, numCartItems }) => (
-    <div className='cart-icon' onClick={ toggleCartHidden }>
+const CartIcon = (state) => (
+    <div className='cart-icon' onClick={ state.toggleCartHidden }>
         <ShoppingIcon className='shopping-icon' />
-        <span className='item-count'>{ numCartItems }</span>
+        <span className='item-count'>{ state.numCartItems }</span>
     </div>
 )
 

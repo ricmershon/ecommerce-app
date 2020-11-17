@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: CollectionPreview.jsx
+ * MODULE: src/components/CollectionPreview/CollectionPreview.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

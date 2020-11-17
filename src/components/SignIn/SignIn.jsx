@@ -1,11 +1,11 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: SignIn.jsx
+ * MODULE: src/components/SignIn/SignIn.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: SignIn React class component. Email and password
- * maintained in state.
+ * Description: SignIn React class component. Email and password maintained
+ * in local state.
  */
 
 /*
@@ -93,8 +93,8 @@ class SignIn extends Component {
                     <div className='buttons'>
 
                         { /* 
-                           * Submit the form on this on this component to log
-                           * in a user or registered on the SignUp component
+                           * Submit the form on this component to log in a
+                           * user registered on the SignUp component
                            */ }
                            
                         <CustomButton type='submit'>Sign In</CustomButton>

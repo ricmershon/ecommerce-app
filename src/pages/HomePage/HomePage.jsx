@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: HomePage.jsx
+ * MODULE: src/pages/HomePage/HomePage.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

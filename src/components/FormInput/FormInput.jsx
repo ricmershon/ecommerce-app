@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: FormInput.jsx
+ * MODULE: src/components/FormInput/FormInput.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

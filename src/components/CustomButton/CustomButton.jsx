@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: CustomButton.jsx
+ * MODULE: src/components/CustomButton/CustomButton.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *

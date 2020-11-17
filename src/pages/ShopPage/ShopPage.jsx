@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: Shop.jsx
+ * MODULE: src/pages/Shop/Shop.jsx
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
