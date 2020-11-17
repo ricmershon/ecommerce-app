@@ -27,7 +27,9 @@ import CustomButton from '../CustomButton/CustomButton';
 const CartDropdown = () => (
     <div className='cart-dropdown'>
         <div className='cart-items' />
-        <CustomButton>GO TO CHECKOUT</CustomButton>
+        <CustomButton
+            isInverted
+        >GO TO CHECKOUT</CustomButton>
     </div>
 )
 

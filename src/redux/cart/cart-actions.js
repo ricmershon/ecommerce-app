@@ -4,7 +4,7 @@
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: Redux action for cart object.
+ * Description: Redux actions for cart object.
  */
 
 /*
@@ -14,9 +14,18 @@
 import { CartActionTypes } from './cart-types'
 
 /*
- * setCurrentCart action configuration
+ * Cart actions configuration
  */
+
+/* Toggle the cart dropdown */
 
 export const toggleCartHidden = () => ({
     type: CartActionTypes.TOGGLE_CART_HIDDEN
+})
+
+/* Add an item to the cart */
+
+export const addItem = (item) => ({
+    type: CartActionTypes.ADD_ITEM,
+    payload: item
 })
