@@ -12,6 +12,7 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -19,18 +20,29 @@ import React from 'react';
 
 import './CartDropdown-styles.scss';
 import CustomButton from '../CustomButton/CustomButton';
+import CartItem from '../CartItem/CartItem';
 
 /*
  * CartDropdown component
  */
 
-const CartDropdown = () => (
+const CartDropdown = ({ cartItems }) => (
     <div className='cart-dropdown'>
-        <div className='cart-items' />
+        <div className='cart-items'>
+        {
+            cartItems.map((cartItem) => (
+                <CartItem key={ cartItem.id } item={ cartItem } />
+            ))
+        }
+        </div>
         <CustomButton
             isInverted
         >GO TO CHECKOUT</CustomButton>
     </div>
 )
 
-export default CartDropdown;
+const mapStateToProps = (state) => ({
+    cartItems: state.cart.cartItems
+})
+
+export default connect(mapStateToProps)(CartDropdown);

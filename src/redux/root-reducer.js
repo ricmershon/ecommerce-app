@@ -21,8 +21,7 @@ import userReducer from './user/user-reducer';
 import cartReducer from './cart/cart-reducer';
 
 /*
- * Redux rootReducer configuration. combineReducers() returns the rootReducer()
- * method containing the combined reducers.
+ * Redux rootReducer configuration.
  */
 
 export default combineReducers({

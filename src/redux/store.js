@@ -21,6 +21,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
  * INTERNAL DEPENDENCIES
  */
 
+/* From combineReducers() redux method */
+
 import rootReducer from './root-reducer';
 
 /*
