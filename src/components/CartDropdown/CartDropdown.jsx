@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 import './CartDropdown-styles.scss';
 import CustomButton from '../CustomButton/CustomButton';
 import CartItem from '../CartItem/CartItem';
-import { selectCartItems } from '../../redux/cart/cart-selectors';
+import { selectCartItems } from '../../selectors/CartSelectors';
 
 /*
  * CartDropdown component

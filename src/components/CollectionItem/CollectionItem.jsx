@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
 
 import './CollectionItem-styles.scss';
 import CustomButton from '../CustomButton/CustomButton';
-import { addItem } from '../../redux/cart/cart-actions';
+import { addItem } from '../../actions/CartActions';
 
 /*
  * CollectionItem component

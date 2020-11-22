@@ -1,6 +1,6 @@
 /*
  * PROJECT: ecommerce-app client
- * MODULE: src/redux/cart/cart-selectors.js
+ * MODULE: src/selectors/CartSelectors.js
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
@@ -13,12 +13,22 @@
 
 import { createSelector } from 'reselect';
 
+/*
+ * Configure cart selectors
+ */
+
 const selectCart = state => state.cart;
 
 export const selectCartItems = createSelector(
     [selectCart],
     (cart) => cart.cartItems
 )
+
+export const selectCartHidden = createSelector(
+    [selectCart],
+    (cart) => cart.hidden
+)
+
 
 export const selectCartItemsCount = createSelector(
     [selectCartItems],

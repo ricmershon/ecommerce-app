@@ -27,7 +27,6 @@ import Directory from '../../components/Directory/Directory';
 const HomePage = ({ history }) => (
     <div className='homepage'>
         <Directory />
-
     </div>
 )
 
