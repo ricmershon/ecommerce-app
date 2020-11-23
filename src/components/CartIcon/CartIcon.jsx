@@ -13,6 +13,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -38,8 +39,8 @@ const mapDispatchToProps = (dispatch) => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 })
 
-const mapStateToProps = (state) => ({
-    numCartItems: selectCartItemsCount(state)
+const mapStateToProps = createStructuredSelector({
+    numCartItems: selectCartItemsCount
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

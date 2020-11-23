@@ -11,7 +11,7 @@
  * INTERNAL DEPENDENCIES
  */
 
-import { UserActionTypes } from '../actions/UserActions'
+import { USER_ACTIONS } from '../actions/UserActions'
 
 /*
  * userReducer configuration
@@ -23,7 +23,7 @@ const INITIAL_USER_STATE = {
 
 const userReducer = (state = INITIAL_USER_STATE, action) => {
     switch (action.type) {
-        case UserActionTypes.SET_CURRENT_USER:
+        case USER_ACTIONS.SET_CURRENT_USER:
             return {
                 ...state,
                 currentUser: action.payload

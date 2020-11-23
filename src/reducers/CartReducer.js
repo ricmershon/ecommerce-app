@@ -11,7 +11,7 @@
  * INTERNAL DEPENDENCIES
  */
 
-import { CartActionTypes } from '../actions/CartActions';
+import { CART_ACTIONS } from '../actions/CartActions';
 import { addItemToCart } from '../utils/CartUtils'
 
 /*
@@ -25,12 +25,12 @@ const INITIAL_CART_STATE = {
 
 const cartReducer = (state = INITIAL_CART_STATE, action) => {
     switch (action.type) {
-        case CartActionTypes.TOGGLE_CART_HIDDEN:
+        case CART_ACTIONS.TOGGLE_CART_HIDDEN:
             return {
                 ...state,
                 hidden: !state.hidden
             }
-        case CartActionTypes.ADD_ITEM:
+        case CART_ACTIONS.ADD_CART_ITEM:
             return {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload)

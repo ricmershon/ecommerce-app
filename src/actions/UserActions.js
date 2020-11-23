@@ -7,13 +7,13 @@
  * Description: Redux action for user object.
  */
 
-export const UserActionTypes = {
+export const USER_ACTIONS = {
     SET_CURRENT_USER: 'SET_CURRENT_USER'
 }
 
 /* Set the current user */
 
 export const setCurrentUser = (user) => ({
-    type: UserActionTypes.SET_CURRENT_USER,
+    type: USER_ACTIONS.SET_CURRENT_USER,
     payload: user
 })

@@ -24,7 +24,9 @@ import cartReducer from './CartReducer';
  * Redux rootReducer configuration.
  */
 
-export default combineReducers({
+const rootReducer = combineReducers({
     user: userReducer,
     cart: cartReducer
 })
+
+export default rootReducer;

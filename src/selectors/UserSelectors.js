@@ -17,7 +17,7 @@ import { createSelector } from 'reselect';
  * Configure cart selectors
  */
 
-const selectUser = state => state.user;
+const selectUser = (state) => state.user;
 
 export const selectCurrentUser = createSelector(
     [selectUser],
