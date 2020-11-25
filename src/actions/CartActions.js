@@ -8,8 +8,9 @@
  */
 
 export const CART_ACTIONS = {
-    TOGGLE_CART_HIDDEN: "TOGGLE_CART_HIDDEN",
-    ADD_CART_ITEM: 'ADD_CART_ITEM'
+    TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
+    ADD_CART_ITEM: 'ADD_CART_ITEM',
+    REMOVE_CART_ITEM: 'REMOVE_CART_ITEM'
 }
 
 /* Toggle cart hidden */
@@ -22,5 +23,12 @@ export const toggleCartHidden = () => ({
 
 export const addItem = (item) => ({
     type: CART_ACTIONS.ADD_CART_ITEM,
+    payload: item
+})
+
+/* Remove an item from the cart */
+
+export const removeItem = (item) => ({
+    type: CART_ACTIONS.REMOVE_CART_ITEM,
     payload: item
 })
