@@ -23,7 +23,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 /* From combineReducers() redux method */
 
-import rootReducer from '../reducers/index';
+import rootReducer from '../reducers/RootReducer';
 
 /*
  * Redux store configuration

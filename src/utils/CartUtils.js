@@ -12,8 +12,6 @@
  * to add to the cart (cartItemToAdd). If cartItems already contains 1 or more
  * of cartItemToAdd it increments the quantity of that cart item. Otherwise,
  * it's added to the cart object.
- * 
- * A new cart object is returned in order for React change detection to trigger.
  */
 
 export const addItemToCart = (cartItems, cartItemToAdd) => {
@@ -34,9 +32,9 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     if (existingCartItem) {
         return cartItems.map((cartItem) =>
             cartItem.id === cartItemToAdd.id
-                ? { ...cartItem, quantity: cartItem.quantity += 1 }
+                ? { ...cartItem, quantity: cartItem.quantity + 1 }
                 : cartItem
-            )
+        )
     }
 
     /*
@@ -44,4 +42,42 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
      */
 
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
+}
+
+/*
+ * removeItemFromCart() receives the existing cart object (cartItems) and an
+ * item to remove from the cart (cartItemToRemove). If cartItems contains 
+ * only 1 of cartItemToRemove then it is removed from the cart object.
+ * Otherwise, its quantity is decremented.
+ */
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+
+    /*
+     * Find the cartItemToRemove in cartItems.
+     */
+
+    const existingCartItem = cartItems.find(
+        (cartItem) => cartItem.id === cartItemToRemove.id
+    )
+
+    /*
+     * If there is only one of the item in the cart then return a new cart
+     * with the cart item removed.
+     */
+
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+    }
+
+    /*
+     * Otherwise return a new cart object with the quantity of the cart item
+     * reduced.
+     */
+
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+    )
 }
