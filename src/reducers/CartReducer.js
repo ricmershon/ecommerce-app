@@ -12,7 +12,7 @@
  */
 
 import { CART_ACTIONS } from '../actions/CartActions';
-import { addItemToCart } from '../utils/CartUtils'
+import { addItemToCart, removeItemFromCart } from '../utils/CartUtils'
 
 /*
  * cartReducer configuration
@@ -36,6 +36,11 @@ const cartReducer = (state = INITIAL_CART_STATE, action) => {
                 cartItems: addItemToCart(state.cartItems, action.payload)
             }
         case CART_ACTIONS.REMOVE_CART_ITEM:
+                return {
+                    ...state,
+                    cartItems: removeItemFromCart(state.cartItems, action.payload)
+                }
+        case CART_ACTIONS.REMOVE_ALL_CART_ITEM:
             return {
                 ...state,
                 cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)

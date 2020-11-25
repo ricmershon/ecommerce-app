@@ -10,7 +10,8 @@
 export const CART_ACTIONS = {
     TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
     ADD_CART_ITEM: 'ADD_CART_ITEM',
-    REMOVE_CART_ITEM: 'REMOVE_CART_ITEM'
+    REMOVE_CART_ITEM: 'REMOVE_CART_ITEM',
+    REMOVE_ALL_CART_ITEM: 'REMOVE_ALL_CART_ITEM'
 }
 
 /* Toggle cart hidden */
@@ -26,9 +27,16 @@ export const addItem = (item) => ({
     payload: item
 })
 
-/* Remove an item from the cart */
+/* Remove and item from the cart */
 
-export const removeItem = (item) => ({
+export  const removeItem = (item) => ({
     type: CART_ACTIONS.REMOVE_CART_ITEM,
+    payload: item   
+})
+
+/* Remove all instances of an item from the cart */
+
+export const removeAllItem = (item) => ({
+    type: CART_ACTIONS.REMOVE_ALL_CART_ITEM,
     payload: item
 })
