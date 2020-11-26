@@ -12,6 +12,11 @@
  */
 
 import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+
+/* use local storage in browser as default storage */ 
+
+import storage from 'redux-persist/lib/storage';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -24,9 +29,15 @@ import cartReducer from './CartReducer';
  * Redux rootReducer configuration.
  */
 
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['cart']
+}
+
 const rootReducer = combineReducers({
     user: userReducer,
     cart: cartReducer
 })
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);
