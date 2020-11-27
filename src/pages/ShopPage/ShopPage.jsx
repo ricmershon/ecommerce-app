@@ -12,9 +12,6 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
 
 /*
  * INTERNAL DEPENDENCIES
