@@ -1,5 +1,4 @@
-const DEPARTMENTS_DATA = {
-  departments: [
+const DEPARTMENTS_DATA = [
     {
       title: 'hats',
       imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -32,7 +31,6 @@ const DEPARTMENTS_DATA = {
       id: 5,
       linkUrl: 'shop/mens'
     }
-  ]
-}
+  ];
   
   export default DEPARTMENTS_DATA;

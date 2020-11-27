@@ -4,15 +4,14 @@
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: Directory React class component. Departments data maintained
- * in local state.
+ * Description: Directory React class component.
  */
 
 /*
  * EXTERNAL DEPENDENCIES
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 

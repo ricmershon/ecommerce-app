@@ -4,48 +4,40 @@
  * CREATED: November 2020
  * CREATED BY: Ric Mershon
  *
- * Description: Shop page React class component. Information about items
- * available in the store maintined in state.
+ * Description: Shop page React class component.
  */
 
 /*
  * EXTERNAL DEPENDENCIES
  */
 
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 /*
  * INTERNAL DEPENDENCIES
  */
 
-import SHOP_PAGE_DATA from './ShopPageData';
 import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
+import { selectShopCollections } from '../../selectors/ShopSelectors';
 
 /*
  * ShowPage component
  */
 
-class ShopPage extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            collections: SHOP_PAGE_DATA
-        }
+const ShopPage = ({ collections }) => (
+    <div className='shop-page'>
+    {
+        collections.map(({ id, ...otherCollectionProps}) => (
+            <CollectionPreview key ={ id } { ...otherCollectionProps } />
+        ))
     }
+    </div>
+)
 
-    render () {
-        const { collections } = this.state;
-        return (
-            <div className='shop-page'>
-            {
-                collections.map(({ id, ...otherCollectionProps}) => (
-                    <CollectionPreview key ={ id } { ...otherCollectionProps } />
-                ))
-            }
-            </div>
-        )
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    collections: selectShopCollections
+})
 
-export default ShopPage;
+export default connect(mapStateToProps)(ShopPage);

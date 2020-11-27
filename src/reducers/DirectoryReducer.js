@@ -13,11 +13,14 @@
  */
 
 import DEPARTMENTS_DATA from '../constants/DirectoryData';
+
 /*
- * cartReducer configuration
+ * directoryReducer configuration
  */
 
-const INITIAL_DIRECTORY_STATE = DEPARTMENTS_DATA;
+const INITIAL_DIRECTORY_STATE = {
+    departments: DEPARTMENTS_DATA
+}
 
 const directoryReducer = (state = INITIAL_DIRECTORY_STATE, action) => {
     switch (action.type) {
