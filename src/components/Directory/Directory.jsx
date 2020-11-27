@@ -13,6 +13,8 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 /*
  * INTERNAL DEPENDENCIES
@@ -20,31 +22,24 @@ import React, { Component } from 'react';
 
 import './Directory-styles.scss';
 import MenuItem from '../MenuItem/MenuItem';
-import DEPARTMENTS_DATA from './DepartmentsData';
+import { selectDirectoryDepartments } from '../../selectors/DirectorySelector';
 
 /*
  * Directory component
  */
 
-class Directory extends Component {
-    constructor () {
-        super ();
-        this.state = {
-            departments: DEPARTMENTS_DATA
-        }
-    }
+const Directory = ({ departments }) => (
+    <div className='directory-menu'>
+    {
+        departments.map(({ id, ...otherDepartmentProps }) => (
+            <MenuItem key={ id } { ...otherDepartmentProps } />
+        ))
+    } 
+    </div>
+)
 
-    render() {
-        return (
-            <div className='directory-menu'>
-            {
-                this.state.departments.map(({ id, ...otherDepartmentProps }) => (
-                    <MenuItem key={ id } { ...otherDepartmentProps } />
-                ))
-            } 
-            </div>
-        )
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    departments: selectDirectoryDepartments
+})
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);
