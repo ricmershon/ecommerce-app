@@ -14,13 +14,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
 
 /*
  * INTERNAL DEPENDENCIES
  */
 
-import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
-import { selectShopCollections } from '../../selectors/ShopSelectors';
+import CollectionsOverview from '../../components/CollectionsOverview/CollectionsOverview';
 
 /*
  * ShowPage component
@@ -28,16 +28,9 @@ import { selectShopCollections } from '../../selectors/ShopSelectors';
 
 const ShopPage = ({ collections }) => (
     <div className='shop-page'>
-    {
-        collections.map(({ id, ...otherCollectionProps}) => (
-            <CollectionPreview key ={ id } { ...otherCollectionProps } />
-        ))
-    }
+        <CollectionsOverview />
     </div>
 )
 
-const mapStateToProps = createStructuredSelector({
-    collections: selectShopCollections
-})
 
-export default connect(mapStateToProps)(ShopPage);
+export default ShopPage;
