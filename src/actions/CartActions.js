@@ -7,12 +7,14 @@
  * Description: Redux actions for cart object.
  */
 
-export const CART_ACTIONS = {
-    TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
-    ADD_CART_ITEM: 'ADD_CART_ITEM',
-    REMOVE_CART_ITEM: 'REMOVE_CART_ITEM',
-    REMOVE_ALL_CART_ITEM: 'REMOVE_ALL_CART_ITEM'
-}
+let keyMirror = require("keymirror");
+
+export const CART_ACTIONS = keyMirror({
+    TOGGLE_CART_HIDDEN: null,
+    ADD_CART_ITEM: null,
+    REMOVE_CART_ITEM: null,
+    REMOVE_ALL_CART_ITEM: null
+})
 
 /* Toggle cart hidden */
 

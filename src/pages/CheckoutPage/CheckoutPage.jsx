@@ -15,17 +15,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-
 /*
  * INTERNAL DEPENDENCIES
  */
 
 import './CheckoutPage-styles.scss';
+import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
+import StripeCheckoutButton from '../../components/StripeCheckoutButton/StripeCheckoutButton';
 import { 
     selectCartItems,
     selectCartTotalPrice
 } from '../../selectors/CartSelectors';
-import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
 
 /*
@@ -62,6 +62,12 @@ const CheckoutPage = ({ cartItems, cartTotalPrice }) => (
         <div className='total'>
             <span>TOTAL: ${cartTotalPrice}</span>
         </div>
+        <div className='test-warning'>
+            *Please use the following test credit card for payments*
+            <br />
+            4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
+        </div>
+        <StripeCheckoutButton price={ cartTotalPrice } />
     </div>
 )
 
