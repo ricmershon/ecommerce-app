@@ -7,9 +7,11 @@
  * Description: Redux action for user object.
  */
 
-export const USER_ACTIONS = {
-    SET_CURRENT_USER: 'SET_CURRENT_USER'
-}
+let keyMirror = require("keymirror");
+
+export const USER_ACTIONS = keyMirror({
+    SET_CURRENT_USER: null
+})
 
 /* Set the current user */
 
