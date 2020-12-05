@@ -34,7 +34,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
  * Header component
  */
 
-const Header = (state) => (
+const Header = ({ currentUser, hidden }) => (
     <div className='header'>
         <Link className='logo-container' to='/'>
             <Logo className='logo' />
@@ -54,12 +54,12 @@ const Header = (state) => (
                */ }
 
             {
-                state.currentUser ? (
+                currentUser ? (
                     <div
                         className='option'
                         onClick={ () => auth.signOut() }
                     >
-                        SIGN OUT { state.currentUser.displayName.toUpperCase() }
+                        SIGN OUT { currentUser.displayName.toUpperCase() }
                     </div>
                 ) : (
                     <Link className='option' to='/signin'>
@@ -70,7 +70,7 @@ const Header = (state) => (
             <CartIcon />
         </div>
         {
-            state.hidden ? null : <CartDropdown />
+            hidden ? null : <CartDropdown />
         }
     </div>
 )

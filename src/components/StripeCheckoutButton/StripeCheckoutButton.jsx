@@ -18,9 +18,9 @@ import StripeCheckout from 'react-stripe-checkout';
  * Component
  */
 
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, currentUser }) => {
     const priceForStripe = price * 100; // Stripe takes charges in cents.
-    const publishableKey = 'pk_test_51HsiONCRTQIFczPUoKDY4PRBQsKraBjgSzN0DYkDkROfC0prE1Z0wKN7x364m7devK3prGN75LfSKxRm5OUQDi3i00aOYrrM18';
+    const publishableKey = "pk_test_51HsiONCRTQIFczPUoKDY4PRBQsKraBjgSzN0DYkDkROfC0prE1Z0wKN7x364m7devK3prGN75LfSKxRm5OUQDi3i00aOYrrM18";
 
     const onToken = (token) => {
         console.log(token);

@@ -22,17 +22,15 @@ import { createStructuredSelector } from 'reselect';
 import './CheckoutPage-styles.scss';
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 import StripeCheckoutButton from '../../components/StripeCheckoutButton/StripeCheckoutButton';
-import { 
-    selectCartItems,
-    selectCartTotalPrice
-} from '../../selectors/CartSelectors';
+import { selectCartItems, selectCartTotalPrice } from '../../selectors/CartSelectors';
+import { selectCurrentUser } from '../../selectors/UserSelectors';
 
 
 /*
  * CheckoutPage component
  */
 
-const CheckoutPage = ({ cartItems, cartTotalPrice }) => (
+const CheckoutPage = ({ cartItems, cartTotalPrice, currentUser }) => (
     <div className='checkout-page'>
         <div className='checkout-header'>
             <div className='header-block'>
@@ -67,13 +65,17 @@ const CheckoutPage = ({ cartItems, cartTotalPrice }) => (
             <br />
             4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
         </div>
-        <StripeCheckoutButton price={ cartTotalPrice } />
+        <StripeCheckoutButton
+            price={ cartTotalPrice }
+            currentUser={ currentUser }
+        />
     </div>
 )
 
 const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems,
-    cartTotalPrice: selectCartTotalPrice
+    cartTotalPrice: selectCartTotalPrice,
+    currentUser: selectCurrentUser
 })
 
 
