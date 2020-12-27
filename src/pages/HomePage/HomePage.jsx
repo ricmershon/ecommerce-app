@@ -17,7 +17,8 @@ import React from 'react';
  * INTERNAL DEPENDENCIES
  */
 
-import './HomePage-styles.scss';
+// import './HomePage-styles.scss';
+import { HomePageContainer } from './HomePageStyles';
 import Directory from '../../components/Directory/Directory';
 
 /*
@@ -25,9 +26,9 @@ import Directory from '../../components/Directory/Directory';
  */
 
 const HomePage = ({ history }) => (
-    <div className='homepage'>
+    <HomePageContainer>
         <Directory />
-    </div>
+    </HomePageContainer>
 )
 
 export default HomePage;
